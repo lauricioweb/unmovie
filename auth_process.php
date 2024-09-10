@@ -48,7 +48,7 @@ if ($type_form == "register") {
 
         $auth = true;
 
-        $result = $userDao->create($user, $auth);
+        $userDao->create($user, $auth);
       } else {
         $message->setMessage("email ja esta sendo usado ", "error", "back");
       }

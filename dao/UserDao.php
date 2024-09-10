@@ -22,7 +22,7 @@ class UserDao implements UserDAOInterface
     $user = new User();
 
     $user->user_name = $data["user_name"];
-    $user->last_name = $data["last_name"];
+    $user->last_name = $data["user_lastname"];
     $user->user_email = $data["user_email"];
     $user->user_bio = $data["user_bio"];
     $user->user_password = $data["user_password"];
@@ -50,7 +50,7 @@ class UserDao implements UserDAOInterface
     $stmt->execute();
 
     if ($authUser) {
-      $this->setTokenToSession($user->user_token);
+      return  $this->setTokenToSession($user->user_token);
     }
   }
 
@@ -73,7 +73,7 @@ class UserDao implements UserDAOInterface
         $this->message->setMessage("Faça login para acessar esta pagina", "error", "index.php");
       }
     } else {
-      return false;
+      return "teste";
     }
   }
 

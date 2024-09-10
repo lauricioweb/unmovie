@@ -11,6 +11,11 @@ $message->clearMessage();
 
 $userDao = new UserDao($connection, $BASE_URL);
 
+$userData = $userDao->verifyToken(false);
+$myToken = $_SESSION["token"];
+var_dump($userData);
+exit;
+
 ?>
 
 <!DOCTYPE html>
