@@ -2,17 +2,14 @@
 require_once "globals.php";
 require_once "database.php";
 require_once "models/Message.php";
+require_once "dao/UserDao.php";
 
 $message = new Message($BASE_URL);
 
 $flashMessage = $message->getMessage();
+$message->clearMessage();
 
-if ($flashMessage["msg"] != "") {
-  //limpar mensagem;
-
-  $message->clearMessage();
-}
-
+$userDao = new UserDao($connection, $BASE_URL);
 
 ?>
 
@@ -72,7 +69,7 @@ if ($flashMessage["msg"] != "") {
   </header>
   <?php if (!empty($flashMessage["msg"])): ?>
     <div class="msg-container">
-      <a class="redirect-button" href=" <?= $_SERVER["HTTP_REFERER"] ?>">
+      <a class="redirect-button" href=" <?= $_SERVER["REQUEST_URI"] ?>">
         <i class="fas fa-times"></i>
       </a>
       <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
