@@ -7,7 +7,7 @@ require_once "templates/header.php";
     <div class="row" id="auth-row">
       <div class="col-md-4" id="login-container">
         <h3 id="my-text-color">Entrar</h3>
-        <form action="<?= $BASE_URL?>auth_process.php" method="post">
+        <form action="<?= $BASE_URL ?>auth_process.php" method="post">
           <input name="type" type="hidden" value="login">
           <div class="form-group">
             <label for="email" class="text-white">Email</label>
@@ -53,5 +53,5 @@ require_once "templates/header.php";
   </div>
 
   <?php
-require_once "templates/footoer.php";
-?>
+  require_once "templates/footoer.php";
+  ?>

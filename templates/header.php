@@ -7,11 +7,10 @@ $message = new Message($BASE_URL);
 
 $flashMessage = $message->getMessage();
 
-if($flashMessage["msg"] != ""){
+if ($flashMessage["msg"] != "") {
   //limpar mensagem;
 
   $message->clearMessage();
-
 }
 
 
@@ -33,11 +32,11 @@ if($flashMessage["msg"] != ""){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
-  <link rel="shortcut icon" href="/<?= $BASE_URL?>img/logo0.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/<?= $BASE_URL ?>img/logo0.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css"
     integrity="sha511-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="<?= $BASE_URL?>css/style.css">
+  <link rel="stylesheet" href="<?= $BASE_URL ?>css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.3/css/bootstrap.css"
     integrity="sha511-VcyUgkobcyhqQl74HS1TcTMnLEfdfX6BbjhH8ZBjFU9YTwHwtoRtWSGzhpDVEJqtMlvLM2z3JIixUOu63PNCYQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -48,7 +47,7 @@ if($flashMessage["msg"] != ""){
   <header>
     <nav id="main-navbar" class="navbar navbar-expand-lg">
       <a href="<?= $BASE_URL ?>" class="logo-link">
-        <img id="logo" class="logo" src="<?= $BASE_URL?>img/logo1.png" alt="">
+        <img id="logo" class="logo" src="<?= $BASE_URL ?>img/logo1.png" alt="">
         <span class="unmovie-title">UnMovie</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
@@ -71,11 +70,11 @@ if($flashMessage["msg"] != ""){
       </div>
     </nav>
   </header>
-  <?php if(!empty($flashMessage["msg"])): ?>
-  <div class="msg-container">
-    <a class="redirect-button" href=" <?= $_SERVER["HTTP_REFERER"]?>">
-      <i class="fas fa-times"></i>
-    </a>
-    <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"]?></p>
-  </div>
+  <?php if (!empty($flashMessage["msg"])): ?>
+    <div class="msg-container">
+      <a class="redirect-button" href=" <?= $_SERVER["HTTP_REFERER"] ?>">
+        <i class="fas fa-times"></i>
+      </a>
+      <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
+    </div>
   <?php endif  ?>

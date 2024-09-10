@@ -12,7 +12,6 @@ $user = new User();
 
 //authenticação de usuario;
 
-
 $type_form = filter_input(INPUT_POST, "type");
 
 if ($type_form == "register") {
@@ -37,7 +36,19 @@ if ($type_form == "register") {
       if ($userDao->findByEmail($user_email) === false) {
         $token = $user->generateToken();
         $finalPassword = password_hash($user_password, PASSWORD_DEFAULT);
-        var_dump([$token, $finalPassword]);
+
+        //preparando usuario para a inserção
+
+        $user =  new User();
+        $user->user_name = $user_name;
+        $user->user_email = $user_email;
+        $user->last_name = $user_last;
+        $user->user_password = $finalPassword;
+        $user->user_token = $token;
+
+        $auth = true;
+
+        $result = $userDao->create($user, $auth);
       } else {
         $message->setMessage("email ja esta sendo usado ", "error", "back");
       }
@@ -47,4 +58,5 @@ if ($type_form == "register") {
     $message->setMessage("preencha todos os campos", "error", "back");
   }
 } else {
+  //login do usuario
 }
