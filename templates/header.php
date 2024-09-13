@@ -12,7 +12,6 @@ $message->clearMessage();
 $userDao = new UserDao($connection, $BASE_URL);
 
 $userData = $userDao->verifyToken(false);
-
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +26,8 @@ $userData = $userDao->verifyToken(false);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
     integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g=="
     crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
@@ -77,6 +78,11 @@ $userData = $userDao->verifyToken(false);
             <li class="nav-item">
               <a class="link-auth" href="<?= $BASE_URL ?>editd_profile.php" class="nav-link">teste</a>
             </li>
+             
+            <li class="nav-item">
+              <a class="link-auth" href="<?= $BASE_URL ?>logout.php" class="nav-link">Sair</a>
+            </li>
+          
           <?php else: ?>
             <li class="nav-item">
               <a class="link-auth" href="<?= $BASE_URL ?>auth.php" class="nav-link"> Entrar / Cadastrar</a>

@@ -10,10 +10,10 @@ class UserDao implements UserDAOInterface
   private $url;
   private $message;
 
-  public function __construct(PDO $connection, $url)
-  {
+       public function __construct(PDO $connection, $url)
+     {
     $this->connection = $connection;
-    $this->url = $url;
+             $this->url = $url;
     $this->message = new Message($url);
   }
 
@@ -35,11 +35,11 @@ class UserDao implements UserDAOInterface
   public function create(User $user, $authUser = false)
   {
     $stmt = $this->connection->prepare("insert into users(
-    user_name, user_lastname, user_email, user_bio, user_password, user_token
-    ) values (
-      :user_name, :user_lastname, :user_email, :user_bio, :user_password, :user_token
-      
-    ) ");
+          user_name, user_lastname, user_email, user_bio, user_password, user_token
+          ) values (
+            :user_name, :user_lastname, :user_email, :user_bio, :user_password, :user_token
+
+            ) ");
 
     $stmt->bindParam(":user_name", $user->user_name);
     $stmt->bindParam(":user_lastname", $user->last_name);
@@ -76,8 +76,16 @@ class UserDao implements UserDAOInterface
         $this->message->setMessage("Faça login para acessar esta pagina", "error", "index.php");
       }
     } else {
-      return "teste";
+      return false;
     }
+  }
+
+
+
+  public function destroyToken(){
+   $_SESSION["token"] = "";
+
+   $this->message->setMessage("Deslogado com sucesso","success", "index.php");
   }
 
   public function setTokenToSession($token, $redirect = true)
