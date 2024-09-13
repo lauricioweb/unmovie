@@ -26,7 +26,7 @@ class UserDao implements UserDAOInterface
     $user->user_email = $data["user_email"];
     $user->user_bio = $data["user_bio"];
     $user->user_password = $data["user_password"];
-    $user->user_photo = $data["user_photo"];
+    $user->user_photo = $data["user_image"];
     $user->user_token = $data["user_token"];
 
     return $user;
@@ -37,7 +37,8 @@ class UserDao implements UserDAOInterface
     $stmt = $this->connection->prepare("insert into users(
     user_name, user_lastname, user_email, user_bio, user_password, user_token
     ) values (
-      :user_name, :user_lastname, :user_email, :user_bio, :user_password, :user_token 
+      :user_name, :user_lastname, :user_email, :user_bio, :user_password, :user_token
+      
     ) ");
 
     $stmt->bindParam(":user_name", $user->user_name);
@@ -50,11 +51,13 @@ class UserDao implements UserDAOInterface
     $stmt->execute();
 
     if ($authUser) {
-      return  $this->setTokenToSession($user->user_token);
+      return $this->setTokenToSession($user->user_token);
     }
   }
 
-  public function update(User $user) {}
+  public function update(User $user)
+  {
+  }
 
   public function verifyToken($protected = false)
   {
@@ -86,7 +89,9 @@ class UserDao implements UserDAOInterface
       $this->message->setMessage("Seja bem vindo", "success", "edit_profile.php");
     }
   }
-  public function authenticateUser($email, $password) {}
+  public function authenticateUser($email, $password)
+  {
+  }
   public function findByEmail($email)
   {
     $stmt = $this->connection->prepare("SELECT * FROM users WHERE user_email = :email");
@@ -123,7 +128,11 @@ class UserDao implements UserDAOInterface
     }
   }
 
-  public function findById($id) {}
+  public function findById($id)
+  {
+  }
 
-  public function changePassword(User $user) {}
+  public function changePassword(User $user)
+  {
+  }
 }

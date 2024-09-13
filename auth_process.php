@@ -55,7 +55,7 @@ if ($type_form == "register") {
     }
   } else {
     // msg de erros
-    $message->setMessage("preencha todos os campos", "error", "back");
+           $message->setMessage("preencha todos os campos", "error", "back");
   }
 } else {
   //login do usuario

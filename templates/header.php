@@ -12,9 +12,6 @@ $message->clearMessage();
 $userDao = new UserDao($connection, $BASE_URL);
 
 $userData = $userDao->verifyToken(false);
-$myToken = $_SESSION["token"];
-var_dump($userData);
-exit;
 
 ?>
 
@@ -66,8 +63,25 @@ exit;
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="link-auth" href="<?= $BASE_URL ?>auth.php" class="nav-link"> Entrar / Cadastrar</a>
-          </li>
+            <?php if ($userData): ?>
+
+            <li class="nav-item">
+              <a class="link-auth" href="<?= $BASE_URL ?>newmovie.php" class="nav-link"><i class="far fa-plus-square"></i>
+                Novo Filme</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="link-auth" href="<?= $BASE_URL ?>dashboard.php" class="nav-link">Meus Filmes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="link-auth" href="<?= $BASE_URL ?>editd_profile.php" class="nav-link">teste</a>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a class="link-auth" href="<?= $BASE_URL ?>auth.php" class="nav-link"> Entrar / Cadastrar</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
     </nav>
@@ -79,4 +93,4 @@ exit;
       </a>
       <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
     </div>
-  <?php endif  ?>
+  <?php endif ?>
