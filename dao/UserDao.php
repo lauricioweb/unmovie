@@ -72,11 +72,12 @@ class UserDao implements UserDAOInterface
 
       if ($user) {
         return $user;
-      } else {
+      } else if($protected) {
         $this->message->setMessage("Faça login para acessar esta pagina", "error", "index.php");
       }
-    } else {
-      return false;
+    }else if($protected){
+        $this->message->setMessage("Faça login para acessar esta pagina", "error", "index.php");
+        return false;
     }
   }
 
